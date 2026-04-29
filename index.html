@@ -189,7 +189,47 @@ z-index: -1;
 }
 
 }
+@media (max-width: 600px) {
 
+  body {
+    padding: 10px;
+  }
+
+  /* main container / card */
+  .main-box, .card, .container {
+    width: 95% !important;
+    margin: auto;
+  }
+
+  /* slider / images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* side by side images fix */
+  .center-images img,
+  .image-container img {
+    width: 90% !important;
+    margin: 10px auto;
+    display: block;
+  }
+
+  /* text size */
+  h1, h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  /* button */
+  .open-btn {
+    width: 80%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+}
+ 
 </style>
 
 </head>

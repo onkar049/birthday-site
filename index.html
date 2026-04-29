@@ -203,7 +203,7 @@ z-index: -1;
 
   /* slider / images */
   img {
-    max-width: 100%;
+    max-width: 70%;
     height: auto;
   }
 
@@ -228,6 +228,29 @@ z-index: -1;
     padding: 10px;
   }
 
+}
+
+ @media (max-width: 600px) {
+  .slider img,
+  .slide img,
+  .card img {
+    width: 80% !important;
+    max-width: 220px !important;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
+
+}
+ slider, .slide, .card {
+  position: relative;
+  z-index: 1;
+}
+
+/* countdown वर ठेव */
+.countdown {
+  position: relative;
+  z-index: 2;
 }
  
 </style>

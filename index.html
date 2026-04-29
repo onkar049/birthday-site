@@ -230,29 +230,36 @@ z-index: -1;
 
 }
 
- @media (max-width: 600px) {
+@media (max-width: 600px) {
+
+  /* parent container (जिथे images आहेत) */
+  .slider, .slide, .card, .image-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  /* सर्व images */
   .slider img,
   .slide img,
   .card img {
-    width: 80% !important;
-    max-width: 220px !important;
+    width: 90% !important;
+    max-width: 250px !important;
     height: auto;
-    display: block;
-    margin: 10px auto;
+    margin: 10px 0;
   }
 
-}
- slider, .slide, .card {
-  position: relative;
-  z-index: 1;
-}
+  /* first image (वर) */
+  .slider img:first-child {
+    order: -1;   /* वर जाईल */
+  }
 
-/* countdown वर ठेव */
-.countdown {
-  position: relative;
-  z-index: 2;
-}
- 
+  /* second image (खाली) */
+  .slider img:last-child {
+    order: 2;   /* खाली जाईल */
+  }
+
+} 
 </style>
 
 </head>

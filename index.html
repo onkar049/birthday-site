@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background: linear-gradient(to right,#ffdde1,#ee9ca7);
+
+}
+
+body{
+margin:0;
+font-family:Arial;
+background: linear-gradient(to right,#ffdde1,#ee9ca7);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+text-align:center;
+overflow:hidden;
+}
+
+/* ❤️ LIGHT HEART BACKGROUND */
+body::before{
+content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+font-size:20px;
+opacity:0.05;
+z-index:-2;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items:center;
+}
+
+/* ❤️ FLOATING HEARTS */
+.heart{
+position:fixed;
+top:-10px;
+animation:fall linear forwards;
+z-index:-1;
+}
+
+@keyframes fall{
+0%{transform:translateY(0);}
+100%{transform:translateY(100vh);}
+}
+
+.container{width:100%;}
+
+h1{color:#ff3366;}
+
+/* Countdown */
+#countdown{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+}
+
+.box{
+background:#ff3b3b;
+color:white;
+padding:10px;
+width:65px;
+border-radius:10px;
+}
+
+.box h2{margin:0;font-size:18px;}
+.box p{margin:0;font-size:10px;}
+
+/* Cake */
+#cake{
+width:140px;
+margin-top:15px;
+cursor:pointer;
+}
+
+/* Slider */
+.slider{
+width:90%;
+max-width:280px;
+margin:15px auto;
+overflow:hidden;
+}
+
+.slides{
+display:flex;
+transition:0.4s;
+}
+
+.slide{
+min-width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.text{
+background:white;
+padding:12px;
+border-radius:10px;
+max-width:220px;
+width:100%;
+text-align:center;
+font-size:14px;
+line-height:1.4;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+button{
+margin:5px;
+padding:8px 14px;
+background:#ff3366;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* Dots */
+.dot{
+height:6px;
+width:6px;
+background:#ff3366;
+display:inline-block;
+margin:3px;
+border-radius:50%;
+opacity:0.4;
+}
+.active{opacity:1;}
+
+ body{
+margin:0;
+font-family: Arial;
+background:linear-gradient(to right, #ffdde1,#ee9ca7);
+background-color: rgba(255,255,255,0.6);
+background-blend-mode: lighten;    
+
+.corner-img-right{
+position: fixed;
+top: 50%
+transform translatey(-50%);
+right: 40px;
+width: 390px;
+opacity: 0.8;
+border-radius: 20px;
+box-shadow: 0 4px 12px rgba (0,0,0,0.2);
+pointer-events: none;
+z-index: 0; 
+}  
+
+.corner-img-left{
+position: fixed;
+top: 50%
+transform translatey(-50%);
+left: 40px;
+width: 450px;
+opacity: 0.8;
+border-radius: 20px;
+box-shadow: 0 4px 12px rgba (0,0,0,0.2);
+pointer-events: none;
+z-index: -1; 
+}
+
+@media(max-width:600px){
+    .corner-img{
+        display:none;
+    }
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+    
+    <img src="images/flower.png" class="corner-img-right">
+    <img src="images/envelope.png" class="corner-img-left">
+   <div class="container">
+
+<h1>❤️ Happy Birthday Ashwini ❤️</h1>
+
+<!-- Countdown -->
+<div id="countdown">
+<div class="box"><h2 id="d"></h2><p>D</p></div>
+<div class="box"><h2 id="h"></h2><p>H</p></div>
+<div class="box"><h2 id="m"></h2><p>M</p></div>
+<div class="box"><h2 id="s"></h2><p>S</p></div>
+</div>
+
+<!-- Cake -->
+<img id="cake" src="https://cdn.pixabay.com/photo/2017/05/07/08/56/cake-2294787_1280.png">
+<p>Tap cake 🎂</p>
+
+<!-- Button -->
+<button onclick="openPage()">💌 Click Here</button>
+
+<!-- Slider -->
+<div class="slider">
+<div class="slides" id="slides">
+<div class="slide"><div class="text"></div></div>
+<div class="slide"><div class="text"></div></div>
+<div class="slide"><div class="text"></div></div>
+<div class="slide"><div class="text"></div></div>
+<div class="slide"><div class="text"></div></div>
+</div>
+</div>
+
+<button onclick="prev()">⬅️</button>
+<button onclick="next()">➡️</button>
+
+<div id="dots"></div>
+
+</div>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<!-- Music -->
+<audio id="music" loop>
+<source src="music.mp3">
+</audio>
+
+<script>
+
+// ❤️ FLOATING HEARTS JS
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.className="heart";
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(12+Math.random()*12)+"px";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+},700);
+
+
+// Countdown
+let birthday=new Date("April 29, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+let now=new Date().getTime();
+let gap=birthday-now;
+
+let d=Math.floor(gap/(1000*60*60*24));
+let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((gap%(1000*60*60))/(1000*60));
+let s=Math.floor((gap%(1000*60))/1000);
+
+document.getElementById("d").innerText=d;
+document.getElementById("h").innerText=h;
+document.getElementById("m").innerText=m;
+document.getElementById("s").innerText=s;
+
+},1000);
+
+
+// Cake click
+let clicks=0;
+
+document.getElementById("cake").onclick=function(){
+document.getElementById("music").play();
+confetti({particleCount:120,spread:70});
+
+clicks++;
+if(clicks==3){
+alert("💌 You are very special to me ❤️");
+}
+};
+
+
+// Open page
+function openPage(){
+window.open("gallery.html","_blank");
+}
+
+
+// Slider typing
+let texts=[
+"Hellooo Ashwini 🤗",
+"I Have...",
+"A Message 💌❤️",
+"For Youuuuuu! 🫵🌸🥰",
+"Happy Birthday Ashwini 🎂❤️\n Yours Smile Make Happy Stay Always Happy 😊"
+];
+
+let index=0;
+let slides=document.getElementById("slides");
+let total=texts.length;
+
+let dotsDiv=document.getElementById("dots");
+for(let i=0;i<total;i++){
+let dot=document.createElement("span");
+dot.className="dot";
+if(i==0) dot.classList.add("active");
+dotsDiv.appendChild(dot);
+}
+let dots=document.getElementsByClassName("dot");
+
+function typeText(text, el){
+el.innerHTML="";
+let i=0;
+function type(){
+if(i<text.length){
+if(text[i]=="\n"){el.innerHTML+="<br>";}
+else{el.innerHTML+=text[i];}
+i++;
+setTimeout(type,35);
+}}
+type();
+}
+
+function update(){
+slides.style.transform="translateX(-"+index*100+"%)";
+for(let i=0;i<dots.length;i++){dots[i].classList.remove("active");}
+dots[index].classList.add("active");
+typeText(texts[index], document.querySelectorAll(".text")[index]);
+}
+
+function next(){ if(index<total-1){index++; update();}}
+function prev(){ if(index>0){index--; update();}}
+
+// swipe
+let startX=0;
+slides.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
+slides.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50) next();
+if(endX-startX>50) prev();
+});
+
+update();
+
+</script>
+
+</body>
+</html>

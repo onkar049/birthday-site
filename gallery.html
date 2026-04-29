@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special 💖</title>
+
+<style>
+    
+body{
+margin:0;
+font-family:Arial;
+background: linear-gradient(to right,#ffdde1,#ee9ca7);
+text-align:center;
+padding:20px;
+}
+
+/* hearts */
+body::before{
+content:"❤️ ❤️ ❤️ ❤️ ❤️";
+position:fixed;
+opacity:0.1;
+z-index:-1;
+}
+
+/* gallery */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+}
+
+.gallery img{
+width:130px;
+height:130px;
+border-radius:10px;
+object-fit:cover;
+cursor:pointer;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* popup */
+#popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0, 0, 0, 0.5);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-content{
+    background:#ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width:80%;
+    max-width:320px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+
+    font-family:'Stylish', cursive;
+    font-size:18px;
+    color:#ff3366;
+    line-height:1.5;
+}
+
+#popup img{
+max-width:90%;
+max-height:80%;
+border-radius:10px;
+}
+/* message */
+.message{
+background:white;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+max-width:300px;
+margin:auto;
+}
+
+/* button */
+button{
+margin-top:15px;
+padding:8px 15px;
+background:#ff3366;
+color:white;
+border:none;
+border-radius:8px;
+}
+.side-img-box{
+position: fixed;
+top: 72%;
+right: 50px;
+transform: translateY(-50%);
+}
+
+.side-img-box img{
+width: 230px;
+border-radius: 15px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+@media(max-width:600px){
+.side-img-box{
+display:none;
+}
+}
+
+.photo-row{
+display:flex;
+justify-content: center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+
+}
+
+.photo-row img{
+width:250px;
+height:300px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.photo-row img:hover{
+    transform: scale(1.1);
+}
+
+.main-row{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap: wrap;
+margin-top:20px;
+}
+
+/* left side images */
+.left-extra{
+display:flex;
+flex-direction:row;
+gap:20px;
+}
+
+/* center images (existing) */
+.center-images{
+display:flex;
+gap:20px;
+}
+
+/* common style */
+.main-row img{
+width:250px;
+height:300px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.main-row img:hover{
+    transform: scale(1.1);
+}
+
+.open-btn{
+    position:fixed;
+    top:  60%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    padding:14px 28px;
+    font-size:18px;
+    background:#ff3366;
+    color: white;
+    border: none;
+    border: radius 12px;
+    z-index:1000;
+
+}
+
+.back-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#ff3366 ;
+    color:white;
+    padding:10px 18px;
+    border:none;
+    border-radius: 20px;
+    z-index:1000;
+}
+</style>
+
+</head>
+
+<>
+
+<h2>💖 Special Moments 💖</h2>
+
+<div class="side-img-box">
+    <img src="images/p1.jpg">
+</div>
+
+<div class="main-row">
+
+    <div class="left-extra">
+        <img src="images/f2.jpg.jpeg">
+        <img src="images/p4.jpg.jpeg">
+    </div>
+
+
+    <div class="center-images">
+  <img src="images/f2.jpg.jpeg">
+  <img src="images/f1.jpg.jpeg">
+</div>
+
+<button onclick="openMsg()"class="open-btn">💌 Open Message</button>
+
+
+<div id="popup">
+  <div class="popup-content">
+  <p id="typingText"></p>
+  <button onclick="closeMsg()">Close </button>
+  </div></div>
+
+  <button onclick="goBack()"class="back-btn">⬅️ Back</button>
+
+<script>
+
+let text = "Happy Birthday Ashwini 🎂❤️ You are the best. Yours smile make happy so \nStay always happy 💖😊";
+let i = 0;
+
+function openMsg(){
+document.getElementById("popup").style.display="flex";
+document.getElementById("typingText").innerHTML="";
+i = 0;
+typeEffect();
+}
+
+function typeEffect(){
+if(i < text.length){
+if(text[i] == "\n"){
+document.getElementById("typingText").innerHTML += "<br>";
+}else{
+document.getElementById("typingText").innerHTML += text[i];
+}
+i++;
+setTimeout(typeEffect, 40);  // speed control
+}
+}
+
+function closeMsg(){
+document.getElementById("popup").style.display="none";
+}
+
+</script>
+
+<script>
+setInterval(()=>{
+let b=document.createElement("div");
+b.innerText="🎈";
+b.style.position="fixed";
+b.style.bottom="0";
+b.style.left=Math.random()*100+"%";
+b.style.fontSize="25px";
+document.body.appendChild(b);
+
+setTimeout(()=>b.remove(),4000);
+},1200);
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.innerText="❤️";
+h.style.position="fixed";
+h.style.bottom="0";
+h.style.left=Math.random()*100+"%";
+h.style.fontSize="20px";
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),4000);
+},1500);
+    function goBack(){
+        window.location.href="index.html";
+    }
+</script>
+
+</body>
+</html>

@@ -315,6 +315,25 @@ z-index: -1;
 
 }
  
+.special-date{
+   margin-top:15px;
+   font-size:24px;
+   font-weight:bold;
+   color:#ff4d88;
+   font-family:cursive;
+   text-shadow:0 0 10px pink;
+   animation: glow 2s infinite alternate;
+}
+ @keyframes glow{
+  from{
+     text-shadow:0 0 5px pink;
+  }
+  to{
+   text-shadow:0 0 20px hotpink;
+  }
+ }
+ 
+ 
 </style>
 
 </head>
@@ -335,6 +354,11 @@ z-index: -1;
 <div class="box"><h2 id="m"></h2><p>M</p></div>
 <div class="box"><h2 id="s"></h2><p>S</p></div>
 </div>
+    
+<div class="special-date">
+ ❤️ 29 April 2026 ❤️
+</div>
+ 
 
 <!-- Cake -->
 <img id="cake" src="https://cdn.pixabay.com/photo/2017/05/07/08/56/cake-2294787_1280.png">
@@ -401,6 +425,14 @@ document.getElementById("d").innerText=d;
 document.getElementById("h").innerText=h;
 document.getElementById("m").innerText=m;
 document.getElementById("s").innerText=s;
+ 
+ if(gap < 0){
+document.getElementById("d").innerHTML="00";
+document.getElementById("h").innerHTML="00";
+document.getElementById("m").innerHTML="00";
+document.getElementById("s").innerHTML="00";
+  
+  
 
 },1000);
 
